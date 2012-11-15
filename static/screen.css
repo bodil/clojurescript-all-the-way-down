@@ -1,0 +1,102 @@
+@import url(http://fonts.googleapis.com/css?family=Share+Tech+Mono);
+
+html {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    background: url(debut_dark.png);
+    font-family: 'Share Tech Mono', 'Ubuntu Mono', 'Andale Mono', monospace;
+    font-size: 2em;
+    color: #2f2;
+}
+
+li, input, p {
+    font-family: 'Share Tech Mono', 'Ubuntu Mono', 'Andale Mono', monospace;
+    color: #2f2;
+}
+
+h1 {
+    margin: 0.5em 0;
+    padding: 0.1em 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 108px;
+    text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
+    box-shadow: 0 0 16px rgba(128, 128, 128, 0.4);
+}
+
+h1 img {
+    vertical-align: baseline;
+    margin-right: 0.3em;
+    border-radius: 6px;
+}
+
+ul {
+    margin: 0;
+    padding: 0 2em;
+}
+
+li {
+    list-style: none;
+}
+
+li form {
+    display: inline;
+    margin: 0 0.2em 0 0;
+}
+
+li span {
+    margin: 0;
+    padding: 0 0.2em;
+}
+
+li form input {
+    border: none;
+    background: none;
+}
+
+li input.check, span.check {
+    color: green;
+}
+
+span.delete, span.check, li form input {
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+li.done span.todo {
+    text-decoration: line-through;
+}
+
+form {
+    margin: 0 2em 0 3.8em;
+}
+
+form:before {
+    font-size: 1.6em;
+    content: "✍ ";
+    color: white;
+}
+
+input {
+    font-size: 1em;
+    width: 75%;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    border-left: 1px solid rgba(0, 0, 0, 0.4);
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+input, li {
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+    margin: 0.2em;
+    padding: 0.2em;
+}
+
+input:focus, li:hover {
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 4px rgba(24, 255, 24, 0.3);
+}
