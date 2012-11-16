@@ -18,7 +18,9 @@
     [:head
      [:link {:rel "stylesheet" :href "/screen.css"}]
      [:script {:type "text/javascript" :src "/socket.io/socket.io.js"}]
-     [:script {:type "text/javascript" :src "/cljs.js"}]]
+     [:script {:type "text/javascript" :src "/cljs/goog/base.js"}]
+     [:script {:type "text/javascript" :src "/cljs.js"}]
+     [:script {:type "text/javascript"} "goog.require('tbd.client');"]]
     [:body]]))
 
 (defn get-docs [callback]
@@ -51,7 +53,6 @@
         io (.listen socket-io server)]
     (-> app
         (.use ((aget express "static") "static"))
-        (.use (.bodyParser express))
         (.get "/" get-main))
     (.on (.-sockets io) "connection"
          (fn [socket]

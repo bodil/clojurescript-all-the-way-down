@@ -16,5 +16,4 @@
                {:source-path "src/client"
                 :compiler
                 {:output-to "static/cljs.js"
-                 :output-dir "static/cljs"
-                 :optimizations :simple}}]})
+                 :output-dir "static/cljs"}}]})

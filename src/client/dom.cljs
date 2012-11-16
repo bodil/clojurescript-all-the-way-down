@@ -1,5 +1,7 @@
 (ns tbd.dom)
 
+(defn q [selector] (.querySelector js/document selector))
+
 (defn domready [handler]
   (.addEventListener js/window "DOMContentLoaded" handler))
 

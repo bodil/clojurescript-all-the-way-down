@@ -1,11 +1,7 @@
 (ns tbd.client
   (:use [tbd.yunoincore :only [clj->js]]
-        [tbd.dom :only [domready watch data target]]
+        [tbd.dom :only [domready watch data target q]]
         [webfui.dom :only [defdom]]))
-
-(defn q [selector] (.querySelector js/document selector))
-
-(.log js/console "ohai browser")
 
 (def my-dom (atom nil))
 (def state (atom []))
@@ -14,10 +10,10 @@
 (defdom my-dom)
 
 (defn concept-item [item]
-  [:li
+  [:li {:class (if (item "done") "done" "open")}
    [:span.check {:data-id (item "_id")} (if (item "done") "\u2611" "\u2610")]
    [:span.delete {:data-id (item "_id")} "x"]
-   [:span (item "name")]])
+   [:span.todo (item "name")]])
 
 (defn render-all [old-dom]
   [:div
