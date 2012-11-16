@@ -54,13 +54,10 @@ li span {
     padding: 0 0.2em;
 }
 
-li span.check {
-    color: green;
-}
-
 .delete, .check {
     cursor: pointer;
     font-size: 1.1em;
+    color: white;
 }
 
 .done .todo {

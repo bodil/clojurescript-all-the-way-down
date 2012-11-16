@@ -12,7 +12,7 @@
 
 (def coll (atom nil))
 
-(defn page-template [docs]
+(defn page-template []
   (hiccups/html
    [:html
     [:head
@@ -23,16 +23,13 @@
      [:script {:type "text/javascript"} "goog.require('tbd.client');"]]
     [:body]]))
 
-(defn get-docs [callback]
-  (mongo/find-all @coll {} (fn [docs] (callback docs))))
-
 (defn get-main [req res]
-  (get-docs (fn [docs] (.send res (page-template docs)))))
+  (.send res (page-template)))
 
 (defn send-docs [socket]
-  (get-docs
-   (fn [docs]
-     (.emit socket "docs" (clj->js docs)))))
+  (mongo/find-all @coll {}
+                  (fn [docs]
+                    (.emit socket "docs" (clj->js docs)))))
 
 (defn on-new-doc [socket data]
   (mongo/save! @coll {:name data :done false}
