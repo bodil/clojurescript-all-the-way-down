@@ -1,5 +1,4 @@
-(ns tbd.mongo
-  (:use [tbd.yunoincore :only [clj->js]]))
+(ns tbd.mongo)
 
 (def mongodb (js/require "mongodb"))
 

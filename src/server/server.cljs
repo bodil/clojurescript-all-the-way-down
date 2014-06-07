@@ -1,8 +1,5 @@
 (ns tbd.server
-  (:use [tbd.yunoincore :only [clj->js]])
-  (:require-macros [hiccups.core :as hiccups])
-  (:require [hiccups.runtime :as hiccupsrt]
-            [tbd.mongo :as mongo]))
+  (:require [tbd.mongo :as mongo]))
 
 (defn log [& args] (apply (.-log js/console) (map str args)))
 
@@ -11,20 +8,6 @@
 (def socket-io (js/require "socket.io"))
 
 (def coll (atom nil))
-
-(defn page-template []
-  (hiccups/html
-   [:html
-    [:head
-     [:link {:rel "stylesheet" :href "/screen.css"}]
-     [:script {:type "text/javascript" :src "/socket.io/socket.io.js"}]
-     [:script {:type "text/javascript" :src "/cljs/goog/base.js"}]
-     [:script {:type "text/javascript" :src "/cljs.js"}]
-     [:script {:type "text/javascript"} "goog.require('tbd.client');"]]
-    [:body]]))
-
-(defn get-main [req res]
-  (.send res (page-template)))
 
 (defn send-docs [socket]
   (mongo/find-all @coll {}
@@ -49,8 +32,7 @@
         server (.createServer http app)
         io (.listen socket-io server)]
     (-> app
-        (.use ((aget express "static") "static"))
-        (.get "/" get-main))
+        (.use ((aget express "static") "static")))
     (.on (.-sockets io) "connection"
          (fn [socket]
            (.on socket "new" (partial on-new-doc socket))
