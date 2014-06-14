@@ -4,7 +4,7 @@
             :url "http://www.mozilla.org/MPL/2.0/"}
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/clojurescript "0.0-2197"]
-                 [om "0.6.3"]]
+                 [reagent "0.4.2"]]
   :cljsbuild {:builds
               [{:source-paths ["src/server"]
                 :compiler
@@ -16,6 +16,5 @@
                 :compiler
                 {:output-to "static/cljs.js"
                  :output-dir "static/cljs"
-                 :preamble ["react/react.min.js"]
-                 :externs ["react/externs/react.js"]
+                 :preamble ["reagent/react.js"]
                  :optimizations :none}}]})
